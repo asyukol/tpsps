@@ -1,1 +1,18 @@
+from abc import ABC, abstractmethod
+
+# Абстрактный класс для источника данных
+class StockDataSource(ABC):
+    @abstractmethod
+    def fetchData(self):
+        pass
+
+# Реализация для источника данных API1
+class API1StockDataSource(StockDataSource):
+    def fetchData(self):
+        pass  # реализация получения данных из API1
+
+# Реализация для источника данных API2
+class API2StockDataSource(StockDataSource):
+    def fetchData(self):
+        pass  # реализация получения данных из API2
 
