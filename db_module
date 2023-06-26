@@ -1,1 +1,6 @@
-
+ def updateData(self, __main__):
+        self.__main__ = __main__
+        date.time.add(self)
+        # Обновление данных об акциях с использованием API
+        new_data = requests.get(f"https://api.data.com/{self.stock_name}")
+        return new_data.json()
