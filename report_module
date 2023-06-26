@@ -1,1 +1,25 @@
 
+# Модуль фасада, скрывающий сложность взаимодействия модулей
+class StockForecastFacade:
+    def __init__(self, data_module, forecast_module, report_module, database_module, user_interface):
+        self.data_module = data_module
+        self.forecast_module = forecast_module
+        self.report_module = report_module
+        self.database_module = database_module
+        self.user_interface = user_interface
+
+    def process(self):
+        # Получаем данные
+        data = self.data_module.fetchData()
+
+        # Прогнозируем
+        forecast = self.forecast_module.forecast(data)
+
+        # Генерируем отчет
+        report = self.report_module.generateReport(forecast)
+
+        # Сохраняем в базу данных
+        self.database_module.storeData(report)
+
+        # Отображаем пользователю
+        self.user_interface.displayData(report)
